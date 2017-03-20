@@ -34,7 +34,7 @@
                                     <i class="fa fa-edit fa-margin"></i> <?php echo trans('edit'); ?>
                                 </a>
                             </li>
-                            <li>
+                            <li class="<?php if ($this->mdl_settings->setting('disable_quotes') == 1) {echo 'hidden';} ?>">
                                 <a href="#" class="client-create-quote"
                                    data-client-name="<?php echo $client->client_name; ?>">
                                     <i class="fa fa-file fa-margin"></i> <?php echo trans('create_quote'); ?>

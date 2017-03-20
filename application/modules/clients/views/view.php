@@ -36,7 +36,7 @@
         <h1><?php echo $client->client_name; ?></h1>
     </div>
     <div class="pull-right btn-group">
-        <a href="#" class="btn btn-sm btn-default client-create-quote"
+        <a href="#" class="btn btn-sm btn-default client-create-quote  <?php if ($this->mdl_settings->setting('disable_quotes') == 1) {echo 'hidden';} ?>"
            data-client-name="<?php echo $client->client_name; ?>">
             <i class="fa fa-file"></i> <?php echo trans('create_quote'); ?>
         </a>
@@ -59,7 +59,7 @@
 
 <ul id="submenu" class="nav nav-tabs nav-tabs-noborder">
     <li class="active"><a data-toggle="tab" href="#clientDetails"><?php echo trans('details'); ?></a></li>
-    <li><a data-toggle="tab" href="#clientQuotes"><?php echo trans('quotes'); ?></a></li>
+    <li class= "<?php if ($this->mdl_settings->setting('disable_quotes') == 1) {echo 'hidden';} ?>"><a data-toggle="tab" href="#clientQuotes"><?php echo trans('quotes'); ?></a></li>
     <li><a data-toggle="tab" href="#clientInvoices"><?php echo trans('invoices'); ?></a></li>
     <li><a data-toggle="tab" href="#clientPayments"><?php echo trans('payments'); ?></a></li>
 </ul>
@@ -79,10 +79,10 @@
                     <p>
                         <?php echo ($client->client_address_1) ? $client->client_address_1 . '<br>' : ''; ?>
                         <?php echo ($client->client_address_2) ? $client->client_address_2 . '<br>' : ''; ?>
-                        <?php echo ($client->client_city) ? $client->client_city : ''; ?>
-                        <?php echo ($client->client_state) ? $client->client_state : ''; ?>
                         <?php echo ($client->client_zip) ? $client->client_zip : ''; ?>
-                        <?php echo ($client->client_country) ? '<br>' . $client->client_country : ''; ?>
+                        <?php echo ($client->client_city) ? $client->client_city . '<br>' : ''; ?>                      
+                        <?php echo ($client->client_state) ? $client->client_state . '<br>' : ''; ?>
+                        <?php echo ($client->client_country) ? $client->client_country : ''; ?>                        
                     </p>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
