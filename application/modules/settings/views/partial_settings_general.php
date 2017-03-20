@@ -252,6 +252,20 @@
                 </select>
             </div>
         </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label class="control-label">
+                    <?php echo trans('disable_quotes'); ?>
+                </label>
+                <select name="settings[disable_quotes]" class="input-sm form-control"
+                        id="disable_quotes">
+                    <option value="0"
+                            <?php if (!$this->mdl_settings->setting('disable_quotes')) { ?>selected="selected"<?php } ?>><?php echo trans('no'); ?></option>
+                    <option value="1"
+                            <?php if ($this->mdl_settings->setting('disable_quotes')) { ?>selected="selected"<?php } ?>><?php echo trans('yes'); ?></option>
+                </select>
+            </div>
+        </div>
     </div>
 
     <hr/>

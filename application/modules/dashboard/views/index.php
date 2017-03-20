@@ -1,23 +1,18 @@
 <div id="content">
     <?php echo $this->layout->load_view('layout/alerts'); ?>
-
-    <div class="row <?php if ($this->mdl_settings->setting('disable_quickactions') == 1) {
-        echo 'hidden';
-    } ?>">
+<!-- Kommentar -->
+    <div class="row <?php if ($this->mdl_settings->setting('disable_quickactions') == 1) {echo 'hidden';} ?>">
         <div class="col-xs-12">
-
             <div id="panel-quick-actions" class="panel panel-default quick-actions">
-
                 <div class="panel-heading">
                     <b><?php echo trans('quick_actions'); ?></b>
                 </div>
-
                 <div class="btn-group btn-group-justified no-margin">
                     <a href="<?php echo site_url('clients/form'); ?>" class="btn btn-default">
                         <i class="fa fa-user fa-margin"></i>
                         <span class="hidden-xs"><?php echo trans('add_client'); ?></span>
                     </a>
-                    <a href="javascript:void(0)" class="create-quote btn btn-default">
+                    <a href="javascript:void(0)" class="create-quote btn btn-default <?php if ($this->mdl_settings->setting('disable_quotes') == 1) {echo 'hidden';} ?>">
                         <i class="fa fa-file fa-margin"></i>
                         <span class="hidden-xs"><?php echo trans('create_quote'); ?></span>
                     </a>
@@ -30,21 +25,18 @@
                         <span class="hidden-xs"><?php echo trans('enter_payment'); ?></span>
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-xs-12 col-md-6">
-
+<!-- Angebotsübersicht, abschaltbar -->
+        <div class="col-xs-12 col-md-6 <?php if ($this->mdl_settings->setting('disable_quotes') == 1) {echo 'hidden';} ?>">
             <div id="panel-quote-overview" class="panel panel-default overview">
-
                 <div class="panel-heading">
                     <b><i class="fa fa-bar-chart fa-margin"></i> <?php echo trans('quote_overview'); ?></b>
                     <span class="pull-right text-muted"><?php echo lang($quote_status_period); ?></span>
                 </div>
-
                 <table class="table table-bordered table-condensed no-margin">
                     <?php foreach ($quote_status_totals as $total) { ?>
                         <tr>
@@ -62,17 +54,15 @@
                     <?php } ?>
                 </table>
             </div>
-
         </div>
-        <div class="col-xs-12 col-md-6">
-
+<!-- Rechnungsübersicht -->
+        <?php if ($this->mdl_settings->setting('disable_quotes') == 0) {echo '<div class="col-xs-12 col-md-6">';} ?>
+        <?php if ($this->mdl_settings->setting('disable_quotes') == 1) {echo '<div class="col-xs-12">';} ?>
             <div id="panel-invoice-overview" class="panel panel-default overview">
-
                 <div class="panel-heading">
                     <b><i class="fa fa-bar-chart fa-margin"></i> <?php echo trans('invoice_overview'); ?></b>
                     <span class="pull-right text-muted"><?php echo lang($invoice_status_period); ?></span>
                 </div>
-
                 <table class="table table-bordered table-condensed no-margin">
                     <?php foreach ($invoice_status_totals as $total) { ?>
                         <tr>
@@ -90,8 +80,6 @@
                     <?php } ?>
                 </table>
             </div>
-
-
             <?php if (empty($overdue_invoices)) { ?>
                 <div class="panel panel-default panel-heading">
                     <span class="text-muted"><?php echo trans('no_overdue_invoices'); ?></span>
@@ -114,10 +102,9 @@
     </div>
 
     <div class="row">
-        <div class="col-xs-12 col-md-6">
-
+<!-- Letzte Angebote, abschaltbar -->
+        <div class="col-xs-12 col-md-6 <?php if ($this->mdl_settings->setting('disable_quotes') == 1) {echo 'hidden';} ?>">
             <div id="panel-recent-quotes" class="panel panel-default">
-
                 <div class="panel-heading">
                     <b><i class="fa fa-history fa-margin"></i> <?php echo trans('recent_quotes'); ?></b>
                 </div>
@@ -171,16 +158,15 @@
                     </table>
                 </div>
             </div>
-
         </div>
-        <div class="col-xs-12 col-md-6">
 
+<!-- Rechnungsübersicht -->
+        <?php if ($this->mdl_settings->setting('disable_quotes') == 0) {echo '<div class="col-xs-12 col-md-6">';} ?>
+        <?php if ($this->mdl_settings->setting('disable_quotes') == 1) {echo '<div class="col-xs-12">';} ?>
             <div id="panel-recent-invoices" class="panel panel-default">
-
                 <div class="panel-heading">
                     <b><i class="fa fa-history fa-margin"></i> <?php echo trans('recent_invoices'); ?></b>
                 </div>
-
                 <div class="table-responsive">
                     <table class="table table-striped table-condensed no-margin">
                         <thead>
@@ -194,7 +180,6 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         <?php foreach ($invoices as $invoice) {
                             if ($this->config->item('disable_read_only') == true) {
                                 $invoice->is_read_only = 0;
@@ -243,10 +228,8 @@
                         </tr>
                         </tbody>
                     </table>
-
                 </div>
             </div>
-
         </div>
     </div>
 </div>
