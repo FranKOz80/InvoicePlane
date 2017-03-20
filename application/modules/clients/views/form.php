@@ -52,15 +52,17 @@
                     <label><?php echo trans('address'); ?>: </label>
 <!-- Straße und Hausnummer -->
                     <div class="form-group">
-                        <div class="controls">
+                        <div class="input-group" style="width:100%">
+                            <span class="input-group-addon" style="width:20%"> <?php echo trans('street_address'); ?>: </span>
                             <input type="text" name="client_address_1" id="client_address_1" class="form-control"
                                    placeholder="<?php echo trans('street_address'); ?>"
                                    value="<?php echo htmlspecialchars($this->mdl_clients->form_value('client_address_1')); ?>">
                         </div>
                     </div>
 <!-- Adress-Zusatz -->
-                    <div class="form-group">
-                        <div class="controls">
+                    <div class="form-group hidden">
+                        <div class="input-group" style="width:100%">
+                            <span class="input-group-addon" style="width:20%"> <?php echo trans('street_address_2'); ?>: </span>
                             <input type="text" name="client_address_2" id="client_address_2" class="form-control"
                                    placeholder="<?php echo trans('street_address_2'); ?>"
                                    value="<?php echo htmlspecialchars($this->mdl_clients->form_value('client_address_2')); ?>">
@@ -68,7 +70,8 @@
                     </div>
 <!-- PLZ -->
                     <div class="form-group">
-                        <div class="controls">
+                        <div class="input-group" style="width:100%">
+                            <span class="input-group-addon" style="width:20%"> <?php echo trans('zip_code'); ?>: </span>
                             <input type="text" name="client_zip" id="client_zip" class="form-control"
                                    placeholder="<?php echo trans('zip_code'); ?>"
                                    value="<?php echo htmlspecialchars($this->mdl_clients->form_value('client_zip')); ?>">
@@ -76,23 +79,25 @@
                     </div>
 <!-- Ort -->
                     <div class="form-group">
-                        <div class="controls">
+                        <div class="input-group" style="width:100%">
+                            <span class="input-group-addon" style="width:20%"> <?php echo trans('city'); ?>: </span>
                             <input type="text" name="client_city" id="client_city" class="form-control"
                                    placeholder="<?php echo trans('city'); ?>"
                                    value="<?php echo htmlspecialchars($this->mdl_clients->form_value('client_city')); ?>">
                         </div>
                     </div>
-<!-- Bundesland -->
-                    <div class="form-group">
-                        <div class="controls">
-                            <input type="text" name="client_state" id="client_state" class="form-control"#
-                                   placeholder="<?php echo trans('state'); ?>"
+<!-- Bundesland  -->
+                    <div class="form-group hidden">
+                        <div class="input-group" style="width:100%">
+                            <span class="input-group-addon" style="width:20%"> <?php echo trans('state'); ?>: </span>
+                            <input type="text" name="client_state" id="client_state" class="form-control"
                                    value="<?php echo htmlspecialchars($this->mdl_clients->form_value('client_state')); ?>">
                         </div>
                     </div>
 <!-- Land -->
                     <div class="form-group">
-                        <div class="controls">
+                        <div class="input-group" style="width:100%">
+                            <span class="input-group-addon" style="width:20%"> <?php echo trans('country'); ?>: </span>
                             <select name="client_country" id="client_country" class="form-control">
                                 <option></option>
                                 <?php foreach ($countries as $cldr => $country) { ?>
