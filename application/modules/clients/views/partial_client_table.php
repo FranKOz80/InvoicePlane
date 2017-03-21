@@ -3,7 +3,15 @@
         <thead>
         <tr>
             <th><?php echo trans('client_name'); ?></th>
-            <th><?php echo trans('email_address'); ?></th>
+            <?php if ($custom_fields) { ?>
+                <?php $first = true; ?>
+                <?php foreach ($custom_fields as $custom_field) { ?>
+                    <?php if ($first) { ?>
+                        <th><?php echo $custom_field->custom_field_label; ?></th>
+                        <?php $first = false; ?>
+                    <?php } ?>
+                <?php } ?>
+            <?php } ?> 
             <th><?php echo trans('phone_number'); ?></th>
             <th style="text-align: right;"><?php echo trans('balance'); ?></th>
             <th><?php echo trans('active'); ?></th>
@@ -14,7 +22,15 @@
         <?php foreach ($records as $client) : ?>
             <tr>
                 <td><?php echo anchor('clients/view/' . $client->client_id, $client->client_name); ?></td>
-                <td><?php echo $client->client_custom_schler_1; ?></td>
+                <?php if ($custom_fields) { ?>
+                    <?php $first = true; ?>
+                    <?php foreach ($custom_fields as $custom_field) { ?>
+                        <?php if ($first) { ?>
+                            <td> <?php echo $client->{$custom_field->custom_field_column}; ?> </td>
+                            <?php $first = false; ?>
+                        <?php } ?>
+                    <?php } ?>
+                <?php } ?>
                 <td><?php echo(($client->client_phone ? $client->client_phone : ($client->client_mobile ? $client->client_mobile : ''))); ?></td>
                 <td style="text-align: right;"><?php echo format_currency($client->client_invoice_balance); ?></td>
                 <td><?php echo ($client->client_active) ? trans('yes') : lang('no'); ?></td>

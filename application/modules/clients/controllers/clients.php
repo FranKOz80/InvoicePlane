@@ -37,16 +37,18 @@ class Clients extends Admin_Controller
             $function = 'is_' . $status;
             $this->mdl_clients->$function();
         }
-
+        $this->load->model('custom_fields/mdl_custom_fields');
         $this->mdl_clients->with_total_balance()->paginate(site_url('clients/status/' . $status), $page);
         $clients = $this->mdl_clients->result();
+        $customs = $this->mdl_custom_fields->by_table('ip_client_custom')->get()->result();
 
         $this->layout->set(
             array(
                 'records' => $clients,
                 'filter_display' => true,
                 'filter_placeholder' => trans('filter_clients'),
-                'filter_method' => 'filter_clients'
+                'filter_method' => 'filter_clients',
+                'custom_fields' => $customs
             )
         );
 
