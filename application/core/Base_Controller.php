@@ -35,6 +35,7 @@ class Base_Controller extends MX_Controller
         $this->load->library('session');
         $this->load->helper('url');
         $this->load->helper('trans');
+        $this->load->helper('country');
 
         // Check if database has been configured
         if (!file_exists(APPPATH . 'config/database.php')) {

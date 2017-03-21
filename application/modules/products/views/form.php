@@ -10,7 +10,7 @@
         <?php $this->layout->load_view('layout/alerts'); ?>
 
         <div class="row">
-            <div class="col-xs-12 col-md-7">
+            <div class="col-xs-12">
                 <fieldset>
                     <legend>
                         <?php if ($this->mdl_products->form_value('product_id')) : ?>
@@ -21,22 +21,7 @@
                         <?php endif; ?>
                     </legend>
 
-                    <div class="form-group">
-                        <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
-                            <label class="control-label"><?php echo trans('family'); ?>: </label>
-                        </div>
-                        <div class="col-xs-12 col-sm-8 col-lg-8">
-                            <select name="family_id" id="family_id" class="form-control">
-                                <option value="0"><?php echo trans('select_family'); ?></option>
-                                <?php foreach ($families as $family) { ?>
-                                    <option value="<?php echo $family->family_id; ?>"
-                                            <?php if ($this->mdl_products->form_value('family_id') == $family->family_id) {
-                                            ?>selected="selected"<?php } ?>
-                                    ><?php echo $family->family_name; ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
-                    </div>
+
 
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
@@ -70,6 +55,33 @@
 
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
+                            <label class="control-label"><?php echo trans('family'); ?>: </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-lg-8">
+                            <select name="family_id" id="family_id" class="form-control">
+                                <option value="0"><?php echo trans('select_family'); ?></option>
+                                <?php foreach ($families as $family) { ?>
+                                    <option value="<?php echo $family->family_id; ?>"
+                                            <?php if ($this->mdl_products->form_value('family_id') == $family->family_id) {
+                                            ?>selected="selected"<?php } ?>
+                                    ><?php echo $family->family_name; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
+                            <label class="control-label"><?php echo trans('purchase_price'); ?>: </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-lg-8">
+                            <input type="text" name="purchase_price" id="purchase_price" class="form-control"
+                                   value="<?php echo format_amount($this->mdl_products->form_value('purchase_price')); ?>">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
                             <label class="control-label"><?php echo trans('product_price'); ?>: </label>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-lg-8">
@@ -97,14 +109,7 @@
                         </div>
                     </div>
 
-                </fieldset>
-            </div>
-
-            <div class="col-xs-12 col-md-5">
-                <fieldset>
-                    <legend><?php echo trans('extra_information'); ?></legend>
-
-                    <div class="form-group">
+                    <div class="form-group hidden">
                         <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
                             <label class="control-label"><?php echo trans('provider_name'); ?>: </label>
                         </div>
@@ -112,20 +117,11 @@
                             <input type="text" name="provider_name" id="provider_name" class="form-control"
                                    value="<?php echo $this->mdl_products->form_value('provider_name'); ?>">
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
-                            <label class="control-label"><?php echo trans('purchase_price'); ?>: </label>
-                        </div>
-                        <div class="col-xs-12 col-sm-8 col-lg-8">
-                            <input type="text" name="purchase_price" id="purchase_price" class="form-control"
-                                   value="<?php echo format_amount($this->mdl_products->form_value('purchase_price')); ?>">
-                        </div>
-                    </div>
-
+                    </div>                    
+                    
                 </fieldset>
             </div>
+
         </div>
 
     </div>

@@ -82,7 +82,7 @@
                         <?php echo ($client->client_zip) ? $client->client_zip : ''; ?>
                         <?php echo ($client->client_city) ? $client->client_city . '<br>' : ''; ?>                      
                         <?php echo ($client->client_state) ? $client->client_state . '<br>' : ''; ?>
-                        <?php echo ($client->client_country) ? $client->client_country : ''; ?>                        
+                        <?php echo ($client->client_country) ? get_country_name(trans('cldr'), $client->client_country) : ''; ?>
                     </p>
                 </div>
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
