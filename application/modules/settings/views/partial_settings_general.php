@@ -12,6 +12,10 @@
 
 <div class="tab-info">
 
+    <hr/>
+    <h4><?php echo trans('general_settings'); ?></h4>
+    <br/>
+    
     <div class="row">
         <div class="col-xs-12 col-md-6">
             <div class="form-group">
@@ -73,6 +77,72 @@
         </div>
     </div>
 
+    <hr/>
+    <h4><?php echo trans('deactivate_functions'); ?></h4>
+    <br/>    
+    
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label class="control-label">
+                    <?php echo trans('disable_quickactions'); ?>
+                </label>
+                <select name="settings[disable_quickactions]" class="input-sm form-control"
+                        id="disable_quickactions">
+                    <option value="0"
+                            <?php if (!$this->mdl_settings->setting('disable_quickactions')) { ?>selected="selected"<?php } ?>><?php echo trans('no'); ?></option>
+                    <option value="1"
+                            <?php if ($this->mdl_settings->setting('disable_quickactions')) { ?>selected="selected"<?php } ?>><?php echo trans('yes'); ?></option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label class="control-label">
+                    <?php echo trans('disable_quotes'); ?>
+                </label>
+                <select name="settings[disable_quotes]" class="input-sm form-control"
+                        id="disable_quotes">
+                    <option value="0"
+                            <?php if (!$this->mdl_settings->setting('disable_quotes')) { ?>selected="selected"<?php } ?>><?php echo trans('no'); ?></option>
+                    <option value="1"
+                            <?php if ($this->mdl_settings->setting('disable_quotes')) { ?>selected="selected"<?php } ?>><?php echo trans('yes'); ?></option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label class="control-label">
+                    <?php echo trans('disable_taxes'); ?>
+                </label>
+                <select name="settings[disable_taxes]" class="input-sm form-control"
+                        id="disable_quickactions">
+                    <option value="0"
+                            <?php if (!$this->mdl_settings->setting('disable_taxes')) { ?>selected="selected"<?php } ?>><?php echo trans('no'); ?></option>
+                    <option value="1"
+                            <?php if ($this->mdl_settings->setting('disable_taxes')) { ?>selected="selected"<?php } ?>><?php echo trans('yes'); ?></option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+                <label class="control-label">
+                    <?php echo trans('disable_SKU'); ?>
+                </label>
+                <select name="settings[disable_SKU]" class="input-sm form-control"
+                        id="disable_quotes">
+                    <option value="0"
+                            <?php if (!$this->mdl_settings->setting('disable_SKU')) { ?>selected="selected"<?php } ?>><?php echo trans('no'); ?></option>
+                    <option value="1"
+                            <?php if ($this->mdl_settings->setting('disable_SKU')) { ?>selected="selected"<?php } ?>><?php echo trans('yes'); ?></option>
+                </select>
+            </div>
+        </div>
+    </div> 
+    
     <hr/>
     <h4><?php echo trans('amount_settings'); ?></h4>
     <br/>
@@ -236,38 +306,7 @@
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-xs-12 col-md-6">
-            <div class="form-group">
-                <label class="control-label">
-                    <?php echo trans('disable_quickactions'); ?>
-                </label>
-                <select name="settings[disable_quickactions]" class="input-sm form-control"
-                        id="disable_quickactions">
-                    <option value="0"
-                            <?php if (!$this->mdl_settings->setting('disable_quickactions')) { ?>selected="selected"<?php } ?>><?php echo trans('no'); ?></option>
-                    <option value="1"
-                            <?php if ($this->mdl_settings->setting('disable_quickactions')) { ?>selected="selected"<?php } ?>><?php echo trans('yes'); ?></option>
-                </select>
-            </div>
-        </div>
-        <div class="col-xs-12 col-md-6">
-            <div class="form-group">
-                <label class="control-label">
-                    <?php echo trans('disable_quotes'); ?>
-                </label>
-                <select name="settings[disable_quotes]" class="input-sm form-control"
-                        id="disable_quotes">
-                    <option value="0"
-                            <?php if (!$this->mdl_settings->setting('disable_quotes')) { ?>selected="selected"<?php } ?>><?php echo trans('no'); ?></option>
-                    <option value="1"
-                            <?php if ($this->mdl_settings->setting('disable_quotes')) { ?>selected="selected"<?php } ?>><?php echo trans('yes'); ?></option>
-                </select>
-            </div>
-        </div>
-    </div>
-
+   
     <hr/>
     <h4><?php echo trans('interface'); ?></h4>
     <br/>

@@ -23,7 +23,7 @@
 
 
 
-                    <div class="form-group">
+                    <div class="form-group <?php if ($this->mdl_settings->setting('disable_SKU') == 1) {echo 'hidden';} ?>">
                         <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
                             <label class="control-label"><?php echo trans('product_sku'); ?>: </label>
                         </div>
@@ -55,6 +55,16 @@
 
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
+                            <label class="control-label"><?php echo trans('purchase_price'); ?>: </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-lg-8">
+                            <input type="text" name="purchase_price" id="purchase_price" class="form-control"
+                                   value="<?php echo format_amount($this->mdl_products->form_value('purchase_price')); ?>">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
                             <label class="control-label"><?php echo trans('family'); ?>: </label>
                         </div>
                         <div class="col-xs-12 col-sm-8 col-lg-8">
@@ -69,17 +79,7 @@
                             </select>
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
-                            <label class="control-label"><?php echo trans('purchase_price'); ?>: </label>
-                        </div>
-                        <div class="col-xs-12 col-sm-8 col-lg-8">
-                            <input type="text" name="purchase_price" id="purchase_price" class="form-control"
-                                   value="<?php echo format_amount($this->mdl_products->form_value('purchase_price')); ?>">
-                        </div>
-                    </div>
-                    
+                   
                     <div class="form-group">
                         <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
                             <label class="control-label"><?php echo trans('product_price'); ?>: </label>
@@ -91,6 +91,16 @@
                     </div>
 
                     <div class="form-group">
+                        <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
+                            <label class="control-label"><?php echo trans('standard_price'); ?>: </label>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-lg-8">
+                            <input type="text" name="standard_price" id="standard_price" class="form-control" readonly
+                                   value="<?php echo format_amount($this->mdl_products->form_value('product_price') * $this->mdl_products->form_value('purchase_price')); ?>">
+                        </div>
+                    </div>                    
+                    
+                    <div class="form-group <?php if ($this->mdl_settings->setting('disable_quotes') == 1) {echo 'hidden';} ?>">
                         <div class="col-xs-12 col-sm-3 col-lg-2 text-right text-left-xs">
                             <label class="control-label"><?php echo trans('tax_rate'); ?>: </label>
                         </div>

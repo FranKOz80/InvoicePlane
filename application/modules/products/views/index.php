@@ -21,12 +21,14 @@
 
             <thead>
             <tr>
-                <th><?php echo trans('family'); ?></th>
-                <th><?php echo trans('product_sku'); ?></th>
+                <th class="<?php if ($this->mdl_settings->setting('disable_SKU') == 1) {echo 'hidden';} ?>"><?php echo trans('product_sku'); ?></th>
                 <th><?php echo trans('product_name'); ?></th>
-                <th><?php echo trans('product_description'); ?></th>
+                <th class="hidden"><?php echo trans('product_description'); ?></th>
+                <th><?php echo trans('purchase_price'); ?></th>
+                <th><?php echo trans('family'); ?></th>
                 <th><?php echo trans('product_price'); ?></th>
-                <th><?php echo trans('tax_rate'); ?></th>
+                <th><?php echo trans('standard_price'); ?></th>
+                <th class="<?php if ($this->mdl_settings->setting('disable_taxes') == 1) {echo 'hidden';} ?>" ><?php echo trans('tax_rate'); ?></th>
                 <th><?php echo trans('options'); ?></th>
             </tr>
             </thead>
@@ -34,12 +36,14 @@
             <tbody>
             <?php foreach ($products as $product) { ?>
                 <tr>
+                    <td class="<?php if ($this->mdl_settings->setting('disable_SKU') == 1) {echo 'hidden';} ?>"><?php echo anchor('products/form/' . $product->product_id, $product->product_sku); ?></td>
+                    <td><?php echo anchor('products/form/' . $product->product_id, $product->product_name); ?></td>
+                    <td class="hidden"><?php echo nl2br($product->product_description); ?></td>
+                    <td><?php echo $product->purchase_price; ?></td>
                     <td><?php echo $product->family_name; ?></td>
-                    <td><?php echo $product->product_sku; ?></td>
-                    <td><?php echo $product->product_name; ?></td>
-                    <td><?php echo nl2br($product->product_description); ?></td>
                     <td><?php echo format_currency($product->product_price); ?></td>
-                    <td><?php echo ($product->tax_rate_id) ? $product->tax_rate_name : trans('none'); ?></td>
+                    <td><?php echo format_currency($product->product_price * $product->purchase_price); ?></td>
+                    <td class="<?php if ($this->mdl_settings->setting('disable_quotes') == 1) {echo 'hidden';} ?>"><?php echo ($product->tax_rate_id) ? $product->tax_rate_name : trans('none'); ?></td>
                     <td>
                         <a href="<?php echo site_url('products/form/' . $product->product_id); ?>"
                            title="<?php echo trans('edit'); ?>"><i class="fa fa-edit fa-margin"></i></a>
