@@ -39,7 +39,7 @@
                     <td class="<?php if ($this->mdl_settings->setting('disable_SKU') == 1) {echo 'hidden';} ?>"><?php echo anchor('products/form/' . $product->product_id, $product->product_sku); ?></td>
                     <td><?php echo anchor('products/form/' . $product->product_id, $product->product_name); ?></td>
                     <td class="hidden"><?php echo nl2br($product->product_description); ?></td>
-                    <td><?php echo $product->purchase_price; ?></td>
+                    <td><?php echo format_amount($product->purchase_price); ?></td>
                     <td><?php echo $product->family_name; ?></td>
                     <td><?php echo format_currency($product->product_price); ?></td>
                     <td><?php echo format_currency($product->product_price * $product->purchase_price); ?></td>
