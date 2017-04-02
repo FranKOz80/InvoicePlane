@@ -44,8 +44,11 @@ class Base_Controller extends MX_Controller
             redirect('/welcome');
 
         } else {
-
-            $this->load->database();
+            if ( $this->session->userdata('user_db') == '' ) {
+                $this->load->database();
+            } else {
+                $this->load->database(); //$this->session->userdata('user_db'), false, true
+            }
             $this->load->library('form_validation');
             $this->load->helper('number');
             $this->load->helper('pager');
