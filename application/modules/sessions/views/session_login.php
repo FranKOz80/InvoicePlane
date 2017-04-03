@@ -73,7 +73,17 @@
                            placeholder="<?php echo trans('password'); ?>"<?php if (!empty($_POST['password'])) : ?> value="<?php echo $_POST['email']; ?>"<?php endif; ?>>
                 </div>
             </div>
-
+            
+            <div class="form-group">
+                <div class="col-xs-12 col-sm-3">
+                    <label for="db" class="control-label"><?php echo trans('database'); ?></label>
+                </div>
+                <div class="col-xs-12 col-sm-9">
+                    <input type="db" name="db" id="db" class="form-control"
+                           placeholder="<?php echo trans('database'); ?>"<?php if (!empty($_POST['db'])) : ?> value="<?php echo $_POST['db']; ?>"<?php endif; ?>>
+                </div>
+            </div>
+            
             <input type="submit" name="btn_login" class="btn btn-block btn-primary"
                    value="<?php echo trans('login'); ?>">
 

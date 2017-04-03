@@ -47,7 +47,30 @@ class Base_Controller extends MX_Controller
             if ( $this->session->userdata('user_db') == '' ) {
                 $this->load->database();
             } else {
-                $this->load->database(); //$this->session->userdata('user_db'), false, true
+                                               
+                $config['hostname'] = 'localhost';
+                $config['username'] = 'root';
+                $config['password'] = 'Magic2010';
+                $config['database'] = $this->session->userdata('user_db');
+                $config['dbdriver'] = 'mysqli';
+                $config['dbprefix'] = '';
+                $config['pconnect'] = false;
+                $config['db_debug'] = false;
+                $config['cache_on'] = false;
+                $config['cachedir'] = '';
+                $config['char_set'] = 'utf8';
+                $config['dbcollat'] = 'utf8_general_ci';
+                $config['swap_pre'] = '';
+                $config['autoinit'] = false;
+                $config['stricton'] = false;
+                $this->load->database($config, false, true);
+
+                //$db_obj = $this->load->database($config, false, true);
+                //$connected = $db_obj->initialize();
+                //if (!$connected) {
+                //    $db_obj = $this->load->database();                   
+                //}
+                //$this->load->database();
             }
             $this->load->library('form_validation');
             $this->load->helper('number');

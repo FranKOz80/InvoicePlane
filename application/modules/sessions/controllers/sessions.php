@@ -18,6 +18,13 @@ if (!defined('BASEPATH'))
 
 class Sessions extends Base_Controller
 {
+    
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+    }
+    
     public function index()
     {
         redirect('sessions/login');
@@ -49,6 +56,16 @@ class Sessions extends Base_Controller
 
                     if ($this->authenticate($this->input->post('email'), $this->input->post('password'))) {
                         if ($this->session->userdata('user_type') == 1) {
+                            // Update the user and set user database
+                            $db_array = array(
+                                'user_address_2' => $this->input->post('db'),
+                            );
+                            $this->db->where('user_email', $this->input->post('email'));
+                            $this->db->update('ip_users', $db_array);
+                            $session_data = array(
+                                'user_db' => $this->input->post('db'),
+                            );
+                            $this->session->set_userdata($session_data);
                             redirect('dashboard');
                         } elseif ($this->session->userdata('user_type') == 2) {
                             redirect('guest');
